@@ -4,11 +4,186 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>porcentage sous forme barre</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        padding: 30px 30px;
+        box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
+        background-color: white;
+      }
+      .box .bar {
+        width: 500px;
+        margin-bottom: 15px;
+        padding: 10px;
+      }
+
+      .box .bar .info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5px;
+      }
+
+      .box .bar .info span {
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .box .bar .line {
+        position: relative;
+        width: 100%;
+        height: 15px;
+        background: white;
+        box-shadow: 0 5px 25px rgba(1 1 1 / 35%);
+        border-radius: 2px;
+      }
+
+      .box .bar .line:before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 2px;
+      }
+      .box .bar .html:before {
+        width: 80%;
+        background: #e45126;
+        animation: 1.5s animahtml linear;
+      }
+      @keyframes animahtml {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 80%;
+        }
+      }
+      .box .bar .css:before {
+        width: 70%;
+        background: #0c73b8;
+        animation: 1.5s animacss linear;
+      }
+      @keyframes animacss {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 70%;
+        }
+      }
+      .box .bar .javascript:before {
+        width: 60%;
+        background: #e3a324;
+        animation: 1.5s animajs linear;
+      }
+      @keyframes animajs {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 60%;
+        }
+      }
+      .box .bar .jquery:before {
+        width: 20%;
+        background: #30dd6d;
+        animation: 1.5s animajquery linear;
+      }
+      @keyframes animajquery {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 20%;
+        }
+      }
+      .box .bar .php:before {
+        width: 60%;
+        background: #6d7eb8;
+        animation: 1.5s animaphp linear;
+      }
+      @keyframes animaphp {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 60%;
+        }
+      }
+    </style>
   </head>
   <body>
-    <h1>hello world</h1>
-    <h3>second commit</h3>
-    <h6>third commit</h6>
+    <div class="container box">
+      <div class="bar">
+        <div class="info html">
+          <span>HTML</span>
+          <span>80</span>
+        </div>
+        <div class="line html"></div>
+      </div>
+      <div class="bar">
+        <div class="info css">
+          <span>CSS</span>
+          <span>70</span>
+        </div>
+        <div class="line css"></div>
+      </div>
+      <div class="bar">
+        <div class="info js">
+          <span>Javascript</span>
+          <span>60</span>
+        </div>
+        <div class="line javascript"></div>
+      </div>
+      <div class="bar">
+        <div class="info jq">
+          <span>JQuery</span>
+          <span>20</span>
+        </div>
+        <div class="line jquery"></div>
+      </div>
+      <div class="bar">
+        <div class="info php">
+          <span>PHP</span>
+          <span>60</span>
+        </div>
+        <div class="line php"></div>
+      </div>
+    </div>
+    <script>
+      const html = document.querySelectorAll(".bar .html span");
+      anime(html);
+      const css = document.querySelectorAll(".bar .css span");
+      anime(css);
+      const js = document.querySelectorAll(".bar .js span");
+      anime(js);
+      const jq = document.querySelectorAll(".bar .jq span");
+      anime(jq);
+      const php = document.querySelectorAll(".bar .php span");
+      anime(php);
+      function anime(barre) {
+        var percent = barre[1].innerHTML;
+        var nisba = 0;
+        setInterval(() => {
+          barre[1].innerHTML = nisba + "%";
+          if (nisba == percent) {
+            clearInterval();
+          } else {
+            nisba++;
+          }
+        }, 1500 / percent);
+      }
+    </script>
   </body>
 </html>
+
